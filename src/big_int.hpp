@@ -47,10 +47,17 @@ public:
 
     // 重載 <= 運算符
     bool operator<=(const BigInt& other) const;
+
+    // 重載 == 運算符   
     bool operator==(const BigInt& other) const;
+
+    // 重載 != 運算符
+    bool operator!=(const BigInt& other) const;
 
     // 重載 << 運算符
     friend std::ostream& operator<<(std::ostream& os, const BigInt& bigint);
+
+    std::string to_string() const;
 
 
 private:

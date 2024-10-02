@@ -107,6 +107,9 @@ bool BigInt::operator==(const BigInt& other) const {
     return this->number == other.number && this->is_negative == other.is_negative;
 }
 
+bool BigInt::operator!=(const BigInt& other) const {
+    return !(*this == other);
+}
 
 bool BigInt::add(const BigInt & other) {
     // 如果兩個數字符號相同，直接相加
@@ -146,11 +149,15 @@ bool BigInt::subtract(const BigInt & other) {
 
 
 std::ostream& operator<<(std::ostream& os, const BigInt& bigint) {
-    if (bigint.is_negative) {
-        os << "-";
-    }
-    os << bigint.number;
+    os << bigint.to_string();
     return os;
+}
+
+std::string BigInt::to_string() const {
+    if (this->is_negative) {
+        return "-" + this->number;
+    }
+    return this->number;
 }
 
 std::string BigInt::simplify_add(const std::string& num1, const std::string& num2) {
