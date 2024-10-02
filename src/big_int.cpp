@@ -182,6 +182,33 @@ std::string BigInt::simplify_add(const std::string& num1, const std::string& num
     return result;
 }
 
+BigInt BigInt::sqrt() const {
+    if (*this < 0) {
+        throw std::invalid_argument("Cannot compute the square root of a negative number.");
+    }
+
+    BigInt low = 0;
+    BigInt high = *this;
+    BigInt mid;
+    BigInt result;
+
+    while (low <= high) {
+        mid = (low + high) / 2;
+        BigInt mid_squared = mid * mid;
+
+        if (mid_squared == *this) {
+            return mid;
+        } else if (mid_squared < *this) {
+            low = mid + 1;
+            result = mid;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    return result;
+}
+
 std::string BigInt::simplify_subtract(const std::string& num1, const std::string& num2) {
     std::string result;
     int borrow = 0;

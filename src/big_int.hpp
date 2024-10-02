@@ -59,6 +59,8 @@ public:
 
     std::string to_string() const;
 
+    BigInt sqrt() const;
+
 
 private:
     std::string number;
