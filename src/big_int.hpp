@@ -23,6 +23,13 @@ public:
     // Subtracts two BigInt objects.
     bool subtract(const BigInt & other);
 
+    // 重載 ++ 運算符
+    BigInt & operator++();
+    BigInt operator++(int);
+    // 重載 -- 運算符
+    BigInt & operator--();
+    BigInt operator--(int);
+
     // 重載 + 運算符
     BigInt operator+(const BigInt& other) const;
 

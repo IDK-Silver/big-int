@@ -38,6 +38,28 @@ bool BigInt::is_bigint() {
     );
 }
 
+BigInt & BigInt::operator++() {
+    *this = *this + 1;
+    return *this;
+}
+
+BigInt BigInt::operator++(int) {
+    BigInt temp = *this;
+    ++(*this);
+    return temp;
+}
+
+BigInt & BigInt::operator--() {
+    *this = *this - 1;
+    return *this;
+}
+
+BigInt BigInt::operator--(int) {
+    BigInt temp = *this;
+    --(*this);
+    return temp;
+}
+
 // Checks if the feeded integer is valid Number or not.
 bool BigInt::is_bigint(const std::string & input_string) {
     // If the number is negative, we need to skip the first character.
